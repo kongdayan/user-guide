@@ -4,7 +4,7 @@
   "user": "3. 用户界面",
   "admin": "4. 后台管理页面",
   "function": "5. 常用功能",
-  "api": "6. 二次开发接口",
+  "developer": "6. 二次开发接口",
 
   "about": {
     "title": "About",
@@ -13,7 +13,7 @@
   "contact": {
     "title": "Contact ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "mailto:info@wesharetechnology.com",
     "newWindow": true
   }
 }

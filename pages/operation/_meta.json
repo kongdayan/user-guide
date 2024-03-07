@@ -1,0 +1,7 @@
+{
+  "X-Tray-operation": "3.1 X-Tray 智能托盘操作指南",
+  "user-operation": "3.2 一般用户页面操作指南",
+  "admin-operation": "3.3 后端管理后台页面操作指南",
+  "MQTT-operation": "3.4 MQTT管理后台操作指南",
+  "database-operation": "3.5 数据库管理页面操作指南"
+}

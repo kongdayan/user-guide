@@ -1,6 +1,116 @@
-# 4.2 基本功能
+# 3.3 后端管理后台操作指南
 
-## 4.2.1 建筑注册
+## 3.3.1 页面布局
+
+### 访问后台管理 Visiting Admin Manage Page
+
+> 在浏览器中打开后台管理页面
+> Open Admin Page in your browser
+
+![](../../public/images/admin-login-1.png)
+
+输入具有后台访问权限的**用户名和密码**，点击**Log in**即可登录
+Enter your account name and password with backend access, and click **Log in** to log in.
+
+登录验证成功后会跳转到如下的后台主页
+After successful login verification, you will be redirected to the following backend home page.
+![](../../public/images/admin-layout-1.png)
+
+### 基本页面布局
+
+![](../../public/images//admin-layout-1.png)
+
+- A 左侧导航页面
+- B 快速导航
+- C 管理界面历史操作记录
+- D 已打开的子页面切换
+- E 字体/主题/用户管理
+
+### 子页面布局
+
+![](../../public/images/function-detail-1.png)
+
+- A 数据展示与选择
+- B 数据操作功能栏 (添加/删除/等二次开发功能)
+- C 数据筛选栏 ()
+
+#### 建筑管理 Building
+
+> 在左侧边栏中 点击 **Lab->Building** 进入到建筑管理页面
+
+> In the left sidebar, click **Lab->Building** to go to the Building management page.
+
+![](../../public/images/building-1.png)
+
+此页面用于管理建筑信息，可以进行以下操作
+
+- **增加修改删除建筑记录**
+
+#### 房间管理 Rooms
+
+> 在左侧边栏中 点击 **Lab->Rooms**进入到房间管理页面
+
+> In the left sidebar, click **Lab->Rooms** to go to the Rooms management page.
+
+![](../../public/images/room-1.png)
+
+此页面用于管理房间信息，可以进行以下操作
+
+- **增加修改删除房间记录（分配房间到建筑）**
+
+#### 试剂柜管理 Cabinets
+
+> 在左侧边栏中 点击 **Lab->Cabinets**进入到试剂柜管理页面
+
+> In the left sidebar, click **Lab->Cabinets** to go to the Cabinets management page.
+
+![](../../public/images/carbinet-1.png)
+
+此页面用于管理试剂柜信息，可以进行以下操作
+
+- **增加修改删除试剂柜记录（分配试剂柜到房间））**
+
+#### 设备管理 Device
+
+> 在左侧边栏中 点击 **Lab->Devices** 进入到设备管理页面
+
+> In the left sidebar, click **Lab->Device** to go to the Device management page.
+
+![](../../public/images/device-1.png)
+
+此页面用于管理设备信息，可以进行以下操作
+
+- **增加修改删除设备记录（分配容器到试剂柜）**
+
+#### 容器管理 Vessel
+
+> 在左侧边栏中 点击 **Lab->Vessels**进入到容器管理页面
+
+> In the left sidebar, click **Lab->Vessels** to go to the Vessel management page
+
+![](../../public/images/vessel-1.png)
+
+此页面用于管理容器信息，可以进行以下操作
+
+- **增加修改删除容器记录（分配容器到设备）**
+- **导出容器记录**
+
+#### 用户管理 User Management
+
+> 在左侧边栏中 点击 **Lab->Users** 进入到用户管理页面
+
+> In the left sidebar, click **Lab->Users** to go to the user management page.
+
+![](../../public/images/user-page-1.png)
+
+此页面用于管理用户信息，可以进行以下操作
+
+- **增加修改删除用户记录**
+
+#### 用户组 User Group
+
+
+## 3.3.1 建筑注册
 
 在**建筑管理**页面添加设备存放的**建筑信息**(若已有记录可跳过本步骤)
 
@@ -23,7 +133,7 @@ Save and add another 保存并新加另一个，点击后会跳转至另一个�
 Save and continue editing 保存但不跳转
 Save 保存
 
-## 4.2.2 房间注册
+## 3.3.2 房间注册
 
 在**房间管理**页面添加设备存放的**房间信息**(若已有记录可跳过本步骤)
 
@@ -43,7 +153,7 @@ Save 保存
 
 ![](../../public/images/room-detail-1.png)
 
-## 4.2.3 试剂柜注册
+## 3.3.3 试剂柜注册
 
 在**试剂柜管理**页面添加设备存放的**试剂柜信息**(若已有记录可跳过本步骤)
 
@@ -63,11 +173,11 @@ Save 保存
 
 ![](../../public/images/cabinets-detail-1.png)
 
-## 4.2.4 设备注册
+## 3.3.4 设备注册
 
 设备注册存在两种方式
 
-### 4.2.4.1 自动注册设备
+### 3.3.4.1 自动注册设备
 
 1. 当设备配置正确 **(WIFI 信息,服务器地址,MQTT 账号密码,MQTT 消息通道)**
 2. 接通电源后，打开设备电源开关，设备会自动连接网络。
@@ -75,7 +185,7 @@ Save 保存
 4. 服务器会根据设备的**MAC/SN 信息**自动注册该设备
 5. 但此时设备的位置等信息不完全，需要等待手动分配
 
-### 4.2.4.2 手动注册设备
+### 3.3.3.3 手动注册设备
 
 在设备管理页面添加设备存放的设备信息(若已有记录可跳过本步骤)
 
@@ -98,7 +208,7 @@ Save 保存
 
 ![](../../public/images/device-details-1.png)
 
-## 4.2.5 用户注册
+## 3.3.5 用户注册
 
 Adding a new user
 
@@ -116,9 +226,9 @@ After finishing filling in the information, click **Save**to save the basic info
 
 If you don't want to change, you can click the**Go-back**button at the bottom left corner and the page will automatically direct back to the user management page
 
-## 4.2.6 用户组管理
+## 3.3.6 用户组管理
 
-### 4.2.6.1 用户权限与分组 User authorization and grouping
+### 3.3.6.1 用户权限与分组 User authorization and grouping
 
 在 4-2-2 中，非管理员（超级用户）用户不可以修改以下字段，仅有管理员可以对用户的权限进行修改，在这里，可以对用户能够访问的权限进行细致的修改
 
@@ -148,9 +258,9 @@ When checked, the user can log in to the backend through the backend management 
 
 Superuser field is used to authorize whether the user is a superuser or not, the superuser has all the privileges of the system, please be careful to grant this privilege
 
-## 4.2.3 容器管理 Vessel management
+## 3.3.7 容器管理 Vessel management
 
-### 4.2.3.1 新容器的增加 Addition of new vessels
+### 3.3.7.1 新容器的增加 Addition of new vessels
 
 在容器管理界面中点击 Add 按钮添加新容器，其中黑色加粗的字段是必填项。完成填写后，点击 save 即可保存基本信息。
 
@@ -158,7 +268,7 @@ In the vessel management interface, click **Add**button to add a new vessel, whe
 
 !
 
-### 4.2.3.2 容器信息修改 Vessel information modification
+### 3.3.7.2 容器信息修改 Vessel information modification
 
 如果需要修改容器的信息，你可以直接点击蓝色高亮的容器 ID，进入容器信息页面进行编辑
 
@@ -172,7 +282,7 @@ The following figure shows the vessel information, you can modify it on the page
 
 !
 
-### 4.2.3.3 容器删除 Vessel Deletion
+### 3.3.7.3 容器删除 Vessel Deletion
 
 如果需要删除容器，你可以直接点击蓝色高亮的容器 ID，进入容器信息页面进行删除
 

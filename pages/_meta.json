@@ -1,8 +1,9 @@
 {
-  "index": "1. 系统介绍",
-  "start": "2. 安装与使用",
-  "user": "3. 用户界面",
-  "admin": "4. 后台管理页面",
+  "index": "手册索引",
+  "introduction": "1. 产品概述",
+  "install": "2. 安装指南",
+  "operation": "3. 操作指南",
+  "error": "4. 故障排除",
   "function": "5. 常用功能",
   "developer": "6. 二次开发接口",
 

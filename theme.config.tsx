@@ -14,6 +14,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Nextra Docs Template',
   },
+  
 }
 
 export default config

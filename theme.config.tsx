@@ -7,7 +7,6 @@ const config: DocsThemeConfig = {
     link: 'https://github.com/wesharetechnology/user-guide',
   },
   chat: {
-    // icon: MdOutlineMail,
     link: 'mailto:info@wesharetechnology.com',
   },
   docsRepositoryBase: 'https://github.com/wesharetechnology/user-guide',

@@ -9,8 +9,12 @@
 
 ![](../../public/images/admin-login-1.png)
 
-输入具有后台访问权限的**用户名和密码**，点击**Log in**即可登录
+输入具有后台访问权限的**用户名和密码**，点击**Log in**即可登录,
 Enter your account name and password with backend access, and click **Log in** to log in.
+
+用户名和密码由 **python app/manage.py createsuperuser** 命令进行创建
+本地运行的后端管理系统需要先运行 **python app/manage.py runserver 0.0.0.0:8000**
+网页地址和端口号为 **127.0.0.1:8000/admin**
 
 登录验证成功后会跳转到如下的后台主页
 After successful login verification, you will be redirected to the following backend home page.

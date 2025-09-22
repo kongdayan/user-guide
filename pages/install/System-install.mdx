@@ -39,49 +39,132 @@ Ubuntu
 
 ### 2.2.4.1 数据库 + 数据库管理后台
 
-安装数据库服务
-数据库配置与优化
-安装和配置数据库管理后台
-数据库连接测试
-数据备份与恢复策略
+**安装docker环境**
+```bash
+    sudo apt-get update
+    sudo apt-get install docker.io docker-compose -y
+    sudo systemctl enable --now docker
+```
 
+**部署MYSQL容器**
+```bash
+    #docker-compose.yaml的配置中包含mysql
+    docker-compose up -d weshare_mysql
+```
+
+**数据库连接测试**
+```bash
+    docker exec -it mysql_db mysql -u root -p
+    # 输入密码后验证数据库
+```
+
+**数据备份与恢复策略**
+```bash
+    #备份
+    docker exec mysql_db sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > full_backup.sql
+
+    #恢复
+    docker exec -i mysql_db sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < full_backup.sql
+```
 ### 2.2.4.2 MQTT服务 + MQTT管理后台
 
-安装MQTT服务
-配置MQTT服务参数
-安装MQTT管理后台
-安全设置与用户管理
-MQTT服务测试与验证
+**部署EMQX容器**
+```bash
+    #docker-compose.yaml的配置中包含emqx
+    docker-compose up -d weshare_emqx
+```
 
+**配置MQTT服务参数**
+
+**安装MQTT管理后台**
+
+**安全设置与用户管理**
+```bash
+    # 进入EMQX容器
+    docker exec -it emqx_server bash
+
+    # 创建用户（也可通过emqx_dashboard操作）
+    emqx_ctl users add client_username client_password
+```
+
+**MQTT服务测试与验证**
+```bash
+    #使用MQTTX工具测试连接
+    mosquitto_sub -h your-server-ip -t "test" -u "client_username" -P "client_password"
+    mosquitto_pub -h your-server-ip -t "test" -m "hello" -u "client_username" -P "client_password"
+```
 ### 2.2.4.3 用户页面 + 后端管理后台
 
-安装后端服务
-配置后端服务参数
-部署用户页面和后端管理后台
-用户权限设置与管理
-系统接口测试与功能验证
+**环境配置**
+```bash
+    #安装python
+    sudo apt install python3-pip -y
+    sudo apt install g++ mysql-client libmysqlclient-dev libssl-dev -y
+    #安装所需依赖工具包
+    pip3 install -r ./requirements.txt
+```
 
-## 2.2.5 系统测试
+**部署用户页面和后端管理后台**
+用户页面
+```bash
+    wget https://github.com/wesharetechnology/Lab_Frontend/archive/main.zip -O Lab_Frontend.zip
+    unzip Lab_Frontend.zip
 
-测试计划和测试案例
-执行系统集成测试
-性能测试与优化
-安全性测试和评估
+    #启动服务
+    quasar dev
+```
+后端管理后台
+```bash
+    wget https://github.com/wesharetechnology/weshare_web/archive/main.zip -O weshare_web.zip
+    unzip weshare_web.zip
 
-## 2.2.6 部署后的配置
+    #数据库迁移
+    python manage.py makemigrations
+    python manage.py migrate
 
-系统监控设置
-日志管理与分析
-更新和维护计划
+    #创建定时任务（可选）
+    python manage.py crontab add
 
-## 2.2.7 常见问题解决
+    #启动服务
+    python manage.py runserver 0.0.0.0:8000
+```
+
+**用户权限设置与管理**
+```bash
+    #创建后端管理员
+    python manage.py createsuperuser
+```
+
+
+## 2.2.5 部署后的配置
+
+**EMQX配置**
+1.访问emqx dashboard：http://your-server-ip:18083
+2.在API秘钥中创建一个用于调用EMQX API的秘钥，例如：export_rule:367ad19a16042720/MJYBmtn5vg9CwZDuXtFRTnnfD69B81G419CQPeZZawBX9CE
+3.按实际情况修改API_KEY、API_SECRET、EMQX_HOST后，在服务器中运行配置导入脚本
+```bash
+    !/bin/bash
+    API_KEY = "your_api_key"
+    API_SECRET = "your_api_secret"
+    EMQX_HOST = "localhost"
+
+    #导入Bridges
+    curl -u "$API_KEY:$API_SECRET" -X POST \
+        -H "Content-Type: application/json" \
+        -d @emqx_rules_backup.json \
+        "http://$EMQX_HOST/api/v5/rules"
+    
+    #导入Rules
+    curl -u "$API_KEY:$API_SECRET" -X POST \
+        -H "Content-Type: application/json" \
+        -d @emqx_rules_backup.json \
+        "http://$EMQX_HOST/api/v5/rules"
+
+    echo "Import completed!"
+```
+
+## 2.2.6 常见问题解决
 
 故障诊断指南
 解决常见错误和问题
 联系技术支持
-
-## 2.2.8 附录
-
-术语解释
-配置文件模板
-参考文献和链接

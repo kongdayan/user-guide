@@ -1,4 +1,7 @@
 {
   "schema": "5.1 数据库Schema",
-  "setup": "5.2 开发setup"
+  "setup": "5.2 开发setup",
+  "database-operation": "5.3 数据库管理页面操作指南",
+  "MQTT-operation": "5.4 MQTT管理后台操作指南",
+  "UHF-Reader-operation": "5.5 标签读写软件操作指南"
 }

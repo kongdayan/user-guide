@@ -3,8 +3,7 @@
   "introduction": "1. 产品概述",
   "install": "2. 安装指南",
   "operation": "3. 操作指南",
-  "error": "4. 故障排除",
-  "developer": "5. 二次开发",
+  "developer": "4. 二次开发",
 
   "about": {
     "title": "About",
